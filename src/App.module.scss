@@ -1,13 +1,22 @@
 .container {
-  width: 1198px;
-  margin: 0 auto
+    width: auto;
+    margin: 0 15px;
 }
 .section {
-  margin: 20px 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: left;
+}
+.singleButton {
+    margin: 2px;
+    display: inline-block;
+    &.block {
+        width: 170px;
+    }
 }
 
 h2 {
-  font-size: 38px;
-  font-weight: 700;
-  margin-bottom: .6em;
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 0.6em;
 }

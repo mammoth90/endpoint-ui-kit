@@ -1,14 +1,53 @@
-@use "sass:color";
-@use "/src/styles/params.scss";
-
+@use 'sass:color';
+@use '/src/styles/params.scss';
+@keyframes spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .button {
   border-radius: 8px;
-  padding: 8px 12px;
+  height: 30px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: params.$primaryFont;
+  padding-left: 20px;
+  padding-right: 20px;
+  &Small {
+    border-radius: 5px;
+    font-size: 10px;
+    height: 25px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  &Large {
+    border-radius: 10px;
+    font-size: 16px;
+    height: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
   &Primary {
     background-color: params.$primary;
     color: color.scale(params.$primary, $lightness: -70%);
     &:hover {
-      background-color: color.scale(params.$primary, $lightness: 20%);;
+      background-color: color.scale(params.$primary, $lightness: 20%);
       color: color.scale(params.$primary, $lightness: -50%);
     }
   }
@@ -16,8 +55,65 @@
     background-color: params.$secondary;
     color: color.scale(params.$secondary, $lightness: -70%);
     &:hover {
-      background-color: color.scale(params.$secondary, $lightness: 20%);;
+      background-color: color.scale(params.$secondary, $lightness: 20%);
       color: color.scale(params.$secondary, $lightness: -50%);
     }
   }
+  &:disabled {
+    background-color: #808080;
+    cursor: not-allowed;
+    color: color.scale(#808080, $lightness: -50%);
+  }
+  &.block {
+    width: 100%;
+    margin: 0px;
+  }
+  &.onlyIcon {
+    border-radius: 8px;
+    font-size: 12px;
+    padding-left: 5px;
+    height: 30px;
+    padding-right: 5px;
+  }
+  &.onlyIconSmall {
+    border-radius: 5px;
+    font-size: 8px;
+    padding-left: 5px;
+    height: 25px;
+    padding-right: 5px;
+  }
+  &.onlyIconLarge {
+    border-radius: 10px;
+    font-size: 16px;
+    padding-left: 5px;
+    height: 40px;
+    padding-right: 5px;
+  }
+}
+
+.icon {
+  width: 1.1em;
+  height: 1.1em;
+  fill: currentColor;
+  &PositionRight {
+    margin-left: 0.3em;
+    margin-bottom: -0.2em;
+  }
+  &PositionLeft {
+    margin-right: 0.3em;
+    margin-bottom: -0.2em;
+  }
+  &.onlyIcon {
+    margin-left: 0;
+    width: 2em;
+    height: 2em;
+  }
+  &.onlyIconLoading {
+    fill: none;
+  }
+}
+.loading {
+  position: absolute;
+  animation: spin 1s linear infinite;
+  fill: white;
 }

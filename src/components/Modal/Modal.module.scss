@@ -1,0 +1,64 @@
+@use "/src/styles/params";
+
+.dismiss {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .8);
+  opacity: 0;
+  transform: translateY(-100%);
+  border: none;
+  &.visible {
+    transition: opacity .2s ease-out;
+    transform: translateY(0);
+    opacity: 1;
+    .modal {
+      transition: transform .2s ease-out;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  background-color: #fff;
+  border-radius: params.$border-radius;
+  box-sizing: border-box;
+  width: 100%;
+  .close {
+    position: absolute;
+    cursor: pointer;
+  }
+  &.small {
+    max-width: 320px;
+    padding: 30px;
+    .close {
+      top: 16px;
+      right: 16px;
+      font-size: 20px;
+    }
+  }
+  &.medium {
+    max-width: 540px;
+    padding: 40px;
+    .close {
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+    }
+  }
+  &.large {
+    max-width: 740px;
+    padding: 60px;
+    .close {
+      top: 30px;
+      right: 30px;
+      font-size: 28px;
+    }
+  }
+}
